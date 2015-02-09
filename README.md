@@ -70,9 +70,10 @@ instance will be returned as usual and on 400+ status code responses, the
 Response instance will contain the OAuth2::Error instance.
 
 ## Authorization Grants
-Currently the Authorization Code, Implicit, Resource Owner Password Credentials, Client Credentials, and Assertion
-authentication grant types have helper strategy classes that simplify client
-use.  They are available via the #auth_code, #implicit, #password, #client_credentials, and #assertion methods respectively.
+Currently the Authorization Code, Implicit, Resource Owner Password Credentials,
+Client Credentials, Assertion and Refresh authentication grant types have helper
+strategy classes that simplify client use.  They are available via the #auth_code
+, #implicit, #password, #client_credentials, #assertion and #refresh methods respectively.
 
 ```ruby
 auth_url = client.auth_code.authorize_url(:redirect_uri => 'http://localhost:8080/oauth/callback')
@@ -87,6 +88,8 @@ token = client.password.get_token('username', 'password')
 token = client.client_credentials.get_token
 
 token = client.assertion.get_token(assertion_params)
+
+token = client.refresh.get_token('your-old-token', 'refresh-token-of-the-old-token')
 ```
 
 If you want to specify additional headers to be sent out with the

@@ -169,6 +169,13 @@ module OAuth2
       @client_credentials ||= OAuth2::Strategy::ClientCredentials.new(self)
     end
 
+    # The Refresh Token strategy
+    #
+    # @see http://tools.ietf.org/html/draft-ietf-oauth-v2-15#section-6
+    def refresh
+      @refresh ||= OAuth2::Strategy::Refresh.new(self)
+    end
+
     def assertion
       @assertion ||= OAuth2::Strategy::Assertion.new(self)
     end
